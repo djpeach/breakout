@@ -28,9 +28,12 @@ export default class BootScene extends Phaser.Scene {
   }
 
   create () {
+    this.physics.world.setBoundsCollision(true, true, true, false);
     this.addBricks();
-    this.paddle = this.physics.add.image(window.innerWidth / 2, window.innerHeight - 129, 'breakout', 'paddle.png');
-    this.ball = this.physics.add.image(this.paddle.x, this.paddle.y - 32, 'breakout', 'ball.png');
+    this.paddle = this.physics.add.image(window.innerWidth / 2, window.innerHeight - 129, 'breakout', 'paddle.png').setImmovable();
+    this.ball = this.physics.add.image(this.paddle.x, this.paddle.y - 32, 'breakout', 'ball.png').setBounce(1);
+    this.addCollisions();
+    this.ball.setVelocity(0, -400);
   }
 
   update(time, delta) {
@@ -55,6 +58,15 @@ export default class BootScene extends Phaser.Scene {
       frameQuantity: Math.floor(window.innerWidth / 64) - 2, // the amount of times to add each frame
       gridAlign: { width: Math.floor(window.innerWidth / 64) - 2, height: 6, cellWidth: 64, cellHeight: 32, x: 32 + 64, y: 16 + 32 * 2}, // align the items in a grid defined by the config
     });
+  }
+
+  addCollisions() {
+    this.physics.add.collider(this.ball, this.bricks, this.hitBrick, null, this);
+    this.physics.add.collider(this.ball, this.paddle);
+  }
+
+  hitBrick(ball, brick) {
+    brick.disableBody(true, true);
   }
 
   resize (gameSize, baseSize, displaySize, resolution) {
