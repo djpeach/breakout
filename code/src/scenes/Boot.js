@@ -1,5 +1,6 @@
 import 'phaser';
-import logo from '../../assets/logo.png'
+import breakoutPNG from '../../assets/breakout.png'
+import breakoutJSON from '../../assets/breakout.json'
 
 export default class BootScene extends Phaser.Scene {
   constructor (key) {
@@ -7,7 +8,7 @@ export default class BootScene extends Phaser.Scene {
   }
 
   preload () {
-    this.load.image('logo', logo);
+    this.load.atlas('breakout', breakoutPNG, breakoutJSON);
   }
 
   create () {
