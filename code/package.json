@@ -2,10 +2,11 @@
   "name": "breakout",
   "version": "0.1.0",
   "description": "Simple Breakout game",
-  "main": "src/index.js",
+  "main": "main.js",
   "scripts": {
     "build": "webpack --config webpack/prod.js ",
-    "start": "webpack-dev-server --config webpack/base.js --open"
+    "start": "webpack-dev-server --config webpack/base.js --open",
+    "app": "electron ."
   },
   "author": "Daniel Peach",
   "license": "MIT",
@@ -14,6 +15,7 @@
     "@babel/preset-env": "^7.7.1",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "electron": "^7.1.6",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
     "raw-loader": "^3.1.0",
