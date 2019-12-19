@@ -6,8 +6,12 @@ export default class BootScene extends Phaser.Scene {
     this.paddle;
     this.bricks;
     this.ball;
-    this.speed = window.innerWidth / 3.4;
+    this.speed = window.innerWidth / 2;
+    this.ballSpeed = window.innerHeight / 1.9;
     this.ballInHand = true;
+    this.bonusRound = false;
+    this.score = 0;
+    this.lastBrickHit = 0;
   }
 
   init(data) {
@@ -32,34 +36,31 @@ export default class BootScene extends Phaser.Scene {
     this.physics.world.setBoundsCollision(true, true, true, false);
     this.addBricks();
     this.paddle = this.physics.add.image(window.innerWidth / 2, window.innerHeight - 129, 'breakout', 'paddle.png').setImmovable().setCollideWorldBounds();
+    let desiredPaddleWidth = window.innerWidth / 9;
+    this.paddle.setScale(desiredPaddleWidth/this.paddle.width, 1);
     this.ball = this.physics.add.image(this.paddle.x, this.paddle.y - 32, 'breakout', 'ball.png').setBounce(1).setCollideWorldBounds();
     this.addCollisions();
   }
 
   update(time, delta) {
     let speed = this.speed;
-    if (this.cursors.b_1.isDown) { speed *= 1.6 }
+    if (this.cursors.b_2.isDown) { speed *= 1.6 }
+
     if (this.cursors.left.isDown) {
-      if (this.ballInHand) {
-        this.ball.setVelocityX(-speed);
-      }
       this.paddle.setVelocityX(-speed);
     } else if (this.cursors.right.isDown) {
-      if (this.ballInHand) {
-        this.ball.setVelocityX(speed);
-      }
       this.paddle.setVelocityX(speed);
     } else {
-      if (this.ballInHand) {
-        this.ball.setVelocityX(0);
-      }
       this.paddle.setVelocity(0);
     }
 
-    if (this.ball.y > this.paddle.y) {
+    if (this.ballInHand) {
+      this.ball.setPosition(this.paddle.x, this.paddle.y - 32);
+    }
+
+    if (this.ball.y > this.paddle.y + 32) {
       this.ball.setTint(0xff0000);
       this.ball.setVelocity(0);
-      this.ball.setY(this.paddle.y + 32);
     }
   }
 
@@ -67,7 +68,7 @@ export default class BootScene extends Phaser.Scene {
     this.cursors.b_1.on('down', () => {
       if (this.ballInHand) {
         this.ballInHand = false;
-        this.ball.setVelocityY(-400);
+        this.ball.setVelocity(Math.random() * 8 - 4, -this.ballSpeed);
       } else if (this.ball.y > this.paddle.y) {
         this.ball.setTint(0xffffff);
         this.paddle.setX(window.innerWidth / 2);
@@ -91,11 +92,25 @@ export default class BootScene extends Phaser.Scene {
   }
 
   hitBrick(ball, brick) {
+    let scoreToAdd = 1;
+    let now = this.time.now;
+    if (this.time.now - this.lastBrickHit < 1500) {
+      scoreToAdd *= 3;
+    }
+    this.score += scoreToAdd;
+    this.lastBrickHit = now;
     brick.disableBody(true, true);
   }
 
   hitPaddle(ball, paddle) {
-    ball.setVelocityX((ball.x - paddle.x) * 10);
+    let velX = (ball.x - paddle.x) / paddle.displayWidth;
+    if (ball.x === paddle.x) {
+      velX = (Math.random() * 64 - 32) / paddle.displayWidth;
+    }
+    ball.setVelocityX(velX * 600);
+    if (this.bonusRound) {
+      this.ballSpeed *= 1.4;
+    }
   }
 
   resize (gameSize, baseSize, displaySize, resolution) {
