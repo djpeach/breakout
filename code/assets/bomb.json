@@ -1,0 +1,167 @@
+{
+	"textures": [
+		{
+			"image": "bomb.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 56,
+				"h": 462
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Bomb_0000_Layer-8.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 54,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 64
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 54,
+						"h": 64
+					}
+				},
+				{
+					"filename": "Bomb_0001_Layer-7.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 54,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 64
+					},
+					"frame": {
+						"x": 1,
+						"y": 67,
+						"w": 54,
+						"h": 64
+					}
+				},
+				{
+					"filename": "Bomb_0002_Layer-6.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 54,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 64
+					},
+					"frame": {
+						"x": 1,
+						"y": 133,
+						"w": 54,
+						"h": 64
+					}
+				},
+				{
+					"filename": "Bomb_0003_Layer-5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 54,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 64
+					},
+					"frame": {
+						"x": 1,
+						"y": 199,
+						"w": 54,
+						"h": 64
+					}
+				},
+				{
+					"filename": "Bomb_0004_Layer-4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 54,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 64
+					},
+					"frame": {
+						"x": 1,
+						"y": 265,
+						"w": 54,
+						"h": 64
+					}
+				},
+				{
+					"filename": "Bomb_0005_Layer-3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 54,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 64
+					},
+					"frame": {
+						"x": 1,
+						"y": 331,
+						"w": 54,
+						"h": 64
+					}
+				},
+				{
+					"filename": "Bomb_0006_Layer-2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 54,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 64
+					},
+					"frame": {
+						"x": 1,
+						"y": 397,
+						"w": 54,
+						"h": 64
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:fd3a9b064ca3f11c756284cb01862274:6760851f315e3f999463f99f7b4ed4d7:f63ee348f1e457e41f792cb710b5b64f$"
+	}
+}
